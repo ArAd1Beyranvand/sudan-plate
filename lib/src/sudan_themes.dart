@@ -1,14 +1,11 @@
-import 'package:plate_core/plate_core.dart';
 import 'package:flutter/widgets.dart';
+import 'package:plate_core/plate_core.dart';
 
 import 'sudan_colors.dart';
 import 'sudan_usage.dart';
 
-/// The Sudanese liveries: one ink on one field; the frame and the rule under
-/// the name band are both in the ink.
-///
-/// Measured off the artwork normalised to 320×160: the frame is ~3.1 mm, 0.019
-/// of the height, and the outer corner ~9 mm, 0.055.
+/// One ink on one field; frame and rule are both in the ink. Ratios are
+/// measured off the artwork normalised to 320x160.
 abstract final class SudanThemes {
   static PlateTheme _livery({
     required Color field,
