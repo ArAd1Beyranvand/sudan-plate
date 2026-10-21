@@ -104,72 +104,62 @@ abstract final class SudanPlates {
     ),
   ];
 
-  static PlateSpec _build() {
-    return PlateSpec(
-      id: 'sd.2009',
-      country: SudanCountry.sudan,
-      canvasWidth: _Layout.width,
-      canvasHeight: _Layout.height,
-      panel: const PlatePanel(box: PlateBox(0, 0, _Layout.width, 40)),
-      noPanel: true,
-      background: _background,
-      labels: _labels,
-      slots: <PlateSlot>[
-        const PlateSlot(
-          alphabet: SudanAlphabets.arabicDigits,
-          box: _Layout.classBox,
+  static final PlateSpec standard = PlateSpec(
+    id: 'sd.2009',
+    country: SudanCountry.sudan,
+    canvasWidth: _Layout.width,
+    canvasHeight: _Layout.height,
+    panel: const PlatePanel(box: PlateBox(0, 0, _Layout.width, 40)),
+    noPanel: true,
+    background: _background,
+    labels: _labels,
+    slots: const <PlateSlot>[
+      PlateSlot(alphabet: SudanAlphabets.arabicDigits, box: _Layout.classBox),
+      PlateSlot(alphabet: SudanAlphabets.stateArabic, box: _Layout.stateBox),
+      PlateSlot(
+        alphabet: SudanAlphabets.arabicDigits,
+        box: PlateBox(
+          _Layout.serialLeft,
+          _Layout.serialTop,
+          _Layout.serialRight - _Layout.serialLeft,
+          _Layout.serialHeight,
         ),
-        const PlateSlot(
-          alphabet: SudanAlphabets.stateArabic,
-          box: _Layout.stateBox,
+        length: 5,
+        minLength: 4,
+      ),
+    ],
+    mirrors: const <PlateMirror>[
+      PlateMirror(
+        source: 0,
+        box: _Layout.classEchoBox,
+        glyphHeight: _Layout.codeEchoGlyph,
+        alphabet: SudanAlphabets.digits,
+        editable: true,
+      ),
+      PlateMirror(
+        source: 1,
+        box: _Layout.stateEchoBox,
+        glyphHeight: _Layout.codeEchoGlyph,
+        alphabet: SudanAlphabets.stateLatin,
+        editable: true,
+      ),
+      PlateMirror(
+        source: 2,
+        box: PlateBox(
+          _Layout.serialLeft,
+          _Layout.serialEchoTop,
+          _Layout.serialRight - _Layout.serialLeft,
+          _Layout.serialEchoGlyph,
         ),
-        const PlateSlot(
-          alphabet: SudanAlphabets.arabicDigits,
-          box: PlateBox(
-            _Layout.serialLeft,
-            _Layout.serialTop,
-            _Layout.serialRight - _Layout.serialLeft,
-            _Layout.serialHeight,
-          ),
-          length: 5,
-          minLength: 4,
-        ),
-      ],
-      mirrors: <PlateMirror>[
-        const PlateMirror(
-          source: 0,
-          box: _Layout.classEchoBox,
-          glyphHeight: _Layout.codeEchoGlyph,
-          alphabet: SudanAlphabets.digits,
-          editable: true,
-        ),
-        const PlateMirror(
-          source: 1,
-          box: _Layout.stateEchoBox,
-          glyphHeight: _Layout.codeEchoGlyph,
-          alphabet: SudanAlphabets.stateLatin,
-          editable: true,
-        ),
-        const PlateMirror(
-          source: 2,
-          box: PlateBox(
-            _Layout.serialLeft,
-            _Layout.serialEchoTop,
-            _Layout.serialRight - _Layout.serialLeft,
-            _Layout.serialEchoGlyph,
-          ),
-          glyphHeight: _Layout.serialEchoGlyph,
-          alphabet: SudanAlphabets.digits,
-          editable: true,
-        ),
-      ],
-      textGroups: <PlateTextGroup>[
-        const PlateTextGroup(<int>[0], key: 'class'),
-        const PlateTextGroup(<int>[1], key: 'state'),
-        const PlateTextGroup(<int>[2], prefix: '-', key: 'serial'),
-      ],
-    );
-  }
-
-  static final PlateSpec standard = _build();
+        glyphHeight: _Layout.serialEchoGlyph,
+        alphabet: SudanAlphabets.digits,
+        editable: true,
+      ),
+    ],
+    textGroups: const <PlateTextGroup>[
+      PlateTextGroup(<int>[0], key: 'class'),
+      PlateTextGroup(<int>[1], key: 'state'),
+      PlateTextGroup(<int>[2], prefix: '-', key: 'serial'),
+    ],
+  );
 }
